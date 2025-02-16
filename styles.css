@@ -20,8 +20,40 @@ body.light-mode {
     padding: 10px 20px;
     background-color: #008080; /* Muted Teal navbar */
     transition: background-color 0.3s;
+}
+
+.navbar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
     gap: 20px;
 }
+
+.search-bar {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar input {
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    margin-right: 5px;
+}
+
+.search-bar button {
+    background: none;
+    border: none;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
 
 .navbar .nav-links {
     flex: 1;
@@ -130,11 +162,18 @@ body.light-mode {
 
 /* Featured Section */
 .featured {
-    padding: 50px 20px;
+    padding: 80px 20px;
     text-align: center;
     margin: 0 auto;
     max-width: 1200px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 20px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
+
+
 
 .featured h2 {
     font-size: 2.5em;
@@ -143,30 +182,49 @@ body.light-mode {
 }
 
 .cards {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    padding: 30px;
     margin: 0 auto;
+    max-width: 1200px;
 }
+
+
 
 .card {
     background-color: #222; /* Dark background for cards */
-    border-radius: 10px;
-    padding: 20px;
-    width: 100%;
-    max-width: 300px;
+    border-radius: 20px;
+    padding: 30px;
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow to cards */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
     position: relative;
     transform-style: preserve-3d;
-    transition: transform 0.6s, background-color 0.3s;
-    min-height: 300px;
-    margin: 10px;
+    transition: all 0.4s ease;
+    min-height: 380px;
     box-sizing: border-box;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
+
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+
+.card-front, .card-back {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
 
 .light-mode .card {
     background-color: #F0F0F0;
@@ -189,7 +247,11 @@ body.light-mode {
 .card-back {
     background-color: #333;
     transform: rotateY(180deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
 
 .learn-more-btn {
     padding: 10px 20px;
@@ -198,21 +260,32 @@ body.light-mode {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 10px;
     position: relative;
     z-index: 2;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    width: 80%;
+    max-width: 200px;
 }
+
+
+.card.flipped .learn-more-btn {
+    opacity: 1;
+}
+
 
 .flip-btn {
     background-color: #00FFFF;
     color: #0D0D0D;
     margin: 15px auto 0;
     display: block;
-    width: fit-content;
+    width: 80%;
+    max-width: 200px;
     padding: 8px 16px;
     border-radius: 4px;
     cursor: pointer;
 }
+
 
 .flip-btn:hover {
     background-color: #00CED1;

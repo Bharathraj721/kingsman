@@ -10,18 +10,26 @@
 </head>
 <body>
   <header class="navbar">
-    <div class="logo">
-      <span>Kingsman Nexus</span>
+    <div class="navbar-content">
+      <div class="logo">
+        <a href="index.html"><span>Kingsman Nexus</span></a>
+      </div>
+      <div class="navbar-right">
+        <div class="search-bar">
+          <input type="text" placeholder="Search...">
+          <button><i class="fas fa-search"></i></button>
+        </div>
+        <button class="theme-toggle">
+          <i class="fas fa-moon" id="theme-icon"></i>
+        </button>
+      </div>
     </div>
-    <button class="theme-toggle">
-      <i class="fas fa-moon" id="theme-icon"></i>
-    </button>
-
 
     <nav>
       <ul class="nav-links">
-        <li><a href="homepage.html" class="active">Home</a></li>
-        <li><a href="gaming-tricks.html">Gaming Tricks</a></li>
+
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="gaming-tricks.html">Tricks</a></li>
         <li><a href="videos.html">Videos</a></li>
         <li><a href="news.html">News</a></li>
         <li><a href="editorials.html">Editorials</a></li>
@@ -42,59 +50,47 @@
   <section class="featured">
     <h2>Featured Content</h2>
     <div class="cards">
-      <div class="card" onclick="this.classList.toggle('flipped')">
+      <div class="card">
         <div class="card-front">
-          <img src="gaming-trick.png" alt="Gaming Tricks">
-          <h3>Gaming Stuff</h3>
-          <p>Dive into your favorite games with these ultimate tips and tricks.</p>
-          <button class="learn-more-btn flip-btn">Flip for More</button>
+          <img src="gaming-trick.png" alt="Gaming Tricks" class="card-image">
+          <h3 class="card-title">Gaming Tricks</h3>
         </div>
         <div class="card-back">
-          <h3>Advanced Tips</h3>
-          <ul>
-            <li>Optimize game settings</li>
-            <li>Master key bindings</li>
-            <li>Improve reaction time</li>
-          </ul>
-          <a href="gaming-tricks.html"><button class="learn-more-btn">Learn More</button></a>
+          <h3 class="card-title">Explore Gaming Tricks</h3>
+          <a href="gaming-tricks.html" class="card-link">View All Tricks</a>
         </div>
+
+
       </div>
 
-      <div class="card" onclick="this.classList.toggle('flipped')">
+
+      <div class="card">
         <div class="card-front">
-          <img src="videos.png" alt="Videos">
-          <h3>Exclusive Gaming Clips</h3>
-          <p>Watch tutorials and walkthroughs from the pros.</p>
-          <button class="learn-more-btn flip-btn">Flip for More</button>
+          <img src="videos.png" alt="Videos" class="card-image">
+          <h3 class="card-title">Game Videos</h3>
         </div>
         <div class="card-back">
-          <h3>Video Features</h3>
-          <ul>
-            <li>4K resolution</li>
-            <li>Slow motion analysis</li>
-            <li>Pro commentary</li>
-          </ul>
-          <a href="videos.html"><button class="learn-more-btn">Watch Now</button></a>
+          <h3 class="card-title">Watch Game Videos</h3>
+          <a href="videos.html" class="card-link">View All Videos</a>
         </div>
+
+
       </div>
 
-      <div class="card" onclick="this.classList.toggle('flipped')">
+
+      <div class="card">
         <div class="card-front">
-          <img src="news.png" alt="Gaming News">
-          <h3>Latest Gaming Updates</h3>
-          <p>Stay updated with the latest trends and updates in gaming.</p>
-          <button class="learn-more-btn flip-btn">Flip for More</button>
+          <img src="news.png" alt="Gaming News" class="card-image">
+          <h3 class="card-title">Gaming News</h3>
         </div>
         <div class="card-back">
-          <h3>News Highlights</h3>
-          <ul>
-            <li>Upcoming releases</li>
-            <li>Industry trends</li>
-            <li>Esports updates</li>
-          </ul>
-          <a href="news.html"><button class="learn-more-btn">Read More</button></a>
+          <h3 class="card-title">Latest News</h3>
+          <a href="news.html" class="card-link">Read All News</a>
         </div>
+
+
       </div>
+
 
     </div>
   </section>
@@ -163,6 +159,8 @@
         card.classList.toggle('flipped');
       });
     });
+
+
   </script>
 
 </body>
