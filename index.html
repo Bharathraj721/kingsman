@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kingsman Nexus</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="navbar-content">
+      <div class="logo">
+        <a href="index.html"><span>Kingsman Nexus</span></a>
+      </div>
+      <div class="navbar-right">
+        <div class="search-bar">
+          <input type="text" placeholder="Search..." aria-label="Search">
+          <button aria-label="Search"><i class="fas fa-search"></i></button>
+        </div>
+        <button class="theme-toggle" aria-label="Toggle theme">
+          <i class="fas fa-moon" id="theme-icon"></i>
+        </button>
+      </div>
+    </div>
+
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="gaming-tricks.html">Tricks</a></li>
+        <li><a href="videos.html">Videos</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="editorials.html">Editorials</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1 style="color: #FFFFFF;"><span id="typing-text"></span></h1>
+      <p>Explore the ultimate platform for gaming tricks, tutorials, news, and more!</p>
+      <a href="about.html"><button class="cta-btn animate__animated animate__pulse" style="background-color: #FF007F; color: #FFFFFF;">Explore Now</button></a>
+    </div>
+  </section>
+
+  <section class="featured">
+    <h2>Featured Content</h2>
+    <div class="cards">
+      <div class="card" role="article" aria-label="Gaming Tricks Card">
+        <div class="card-front">
+          <img src="images/gaming-trick.png" alt="Illustration of gaming controller with tips" class="card-image">
+          <h3 class="card-title">Gaming Tricks</h3>
+        </div>
+        <div class="card-back">
+          <h3 class="card-title">Explore Gaming Tricks</h3>
+          <p class="card-description">Discover pro tips and tricks to level up your gameplay</p>
+          <a href="gaming-tricks.html" class="learn-more-btn">View All Tricks</a>
+        </div>
+      </div>
+
+      <div class="card" role="article" aria-label="Game Videos Card">
+        <div class="card-front">
+          <img src="images/videos.png" alt="Video player icon with game footage" class="card-image">
+          <h3 class="card-title">Game Videos</h3>
+        </div>
+        <div class="card-back">
+          <h3 class="card-title">Watch Game Videos</h3>
+          <p class="card-description">Explore tutorials, walkthroughs, and gameplay videos</p>
+          <a href="videos.html" class="learn-more-btn">View All Videos</a>
+        </div>
+      </div>
+
+      <div class="card" role="article" aria-label="Gaming News Card">
+        <div class="card-front">
+          <img src="images/news.png" alt="Newspaper icon with gaming headlines" class="card-image">
+          <h3 class="card-title">Gaming News</h3>
+        </div>
+        <div class="card-back">
+          <h3 class="card-title">Latest News</h3>
+          <p class="card-description">Stay updated with the latest in the gaming world</p>
+          <a href="news.html" class="learn-more-btn">Read All News</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; <script>document.write(new Date().getFullYear());</script> Kingsman Nexus. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    // Typing animation
+    const text = "Welcome to Kingsman Nexus";
+    const typingText = document.getElementById('typing-text');
+    let index = 0;
+    const typeSpeed = 100;
+
+    function type() {
+      if (index < text.length) {
+        typingText.textContent += text.charAt(index);
+        index++;
+        setTimeout(type, typeSpeed);
+      }
+    }
+
+    type();
+
+    // Theme toggle
+    const themeToggle = document.querySelector('.theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const body = document.body;
+    const navbar = document.querySelector('.navbar');
+
+    themeToggle.addEventListener('click', () => {
+      body.classList.toggle('light-mode');
+      navbar.classList.toggle('light-mode');
+      themeIcon.classList.toggle('fa-moon');
+      themeIcon.classList.toggle('fa-sun');
+
+      // Save theme preference
+      localStorage.setItem('theme', body.classList.contains('light-mode') ? 'light' : 'dark');
+    });
+
+    // Apply saved theme
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    if (savedTheme === 'light') {
+      body.classList.add('light-mode');
+      navbar.classList.add('light-mode');
+      themeIcon.classList.remove('fa-moon');
+      themeIcon.classList.add('fa-sun');
+    }
+
+    // Sticky navbar
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // Card flip functionality with navigation
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        if (!card.classList.contains('flipped')) {
+          card.classList.add('flipped');
+          
+          // Get the target page from the card's back content
+          const link = card.querySelector('.learn-more-btn');
+          if (link) {
+            setTimeout(() => {
+              window.location.href = link.href;
+            }, 600); // Wait for flip animation to complete
+          }
+        }
+      });
+    });
+
+    // Add event listener to search bar
+    const searchBar = document.querySelector('.search-bar input');
+    searchBar.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        // Implement search functionality here
+        console.log('Search query:', searchBar.value);
+      }
+    });
+  </script>
+</body>
+</html>
