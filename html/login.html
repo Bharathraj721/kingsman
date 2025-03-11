@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login to Instagram</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script>
+        function validateForm() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('error-message');
+
+            if (username === "" || password === "") {
+                errorMessage.textContent = "Both fields are required.";
+                return false; // Prevent form submission
+            }
+            errorMessage.textContent = ""; // Clear any previous error messages
+            return true; // Allow form submission
+        }
+    </script>
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">
+            <span>Kingsman Nexus</span>
+        </div>
+    </header>
+    <section class="login-section">
+        <h1>Login to Instagram</h1>
+        <form id="login-form" action="backend/authenticate.php" method="POST" onsubmit="return validateForm()">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit">Login</button>
+            <p id="error-message" style="color: red;"></p>
+        </form>
+    </section>
+    <footer>
+        <p>&copy; <script>document.write(new Date().getFullYear());</script> Kingsman Nexus. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
